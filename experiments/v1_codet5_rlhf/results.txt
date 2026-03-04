@@ -1,0 +1,14 @@
+MODEL: CodeT5 + LoRA + RLHF
+DATASET: Spider (subset)
+TRAINING: Execution Reward PPO
+
+Automatic Evaluation:
+Execution Accuracy: 38%
+
+Human Evaluation:
+SFT  Success: 75%
+RLHF Success: 80%
+
+Notes:
+Model improved semantic correctness but sometimes produces invalid SQL syntax.
+Best checkpoint selected based on reward.

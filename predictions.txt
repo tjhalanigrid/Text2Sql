@@ -1,0 +1,1000 @@
+select count(*) from singer	concert_singer
+select count(*) from singer	concert_singer
+select name,  country,  age from singer order by age desc	concert_singer
+select name,  country,  age from singer order by age desc	concert_singer
+select avg(age),  min(age),  max(age) from singer where country  =  'france'	concert_singer
+select avg(age),  min(age),  max(age) from singer where country  =  "french"	concert_singer
+select song_name,  song_release_year from singer order by age desc limit 1	concert_singer
+select name,  song_release_year from singer order by age desc limit 1	concert_singer
+select distinct country from singer where age  >  20	concert_singer
+select distinct country from singer where age  >  20	concert_singer
+select country,  count(*) from singer group by country	concert_singer
+select country,  count(*) from singer group by country	concert_singer
+select song_name from singer where age  >  (select avg(age) from singer)	concert_singer
+select song_name from singer where age  <  (select avg(age) from singer)	concert_singer
+select location,  name from stadium where capacity between 5000 and 10000	concert_singer
+select location,  name from stadium where capacity between 5000 and 10000	concert_singer
+select max(capacity),  avg(average) from stadium	concert_singer
+select avg(capacity),  max(capacity) from stadium	concert_singer
+select name,  capacity from stadium order by average desc limit 1	concert_singer
+select name,  capacity from stadium order by average desc limit 1	concert_singer
+select count(*) from concert where year  =  2014 or year  =  2015	concert_singer
+select count(*) from concert where year  =  2014 or year  =  2015	concert_singer
+select stadium.name,  count(*) from concert join stadium on concert.stadium_id  =  stadium.stadium_id group by concert.stadium_id	concert_singer
+select stadium.name,  count(*) from concert join stadium on concert.stadium_id  =  stadium.stadium_id group by concert.stadium_id	concert_singer
+select stadium.name,  stadium.capacity from concert join stadium on concert.stadium_id  =  stadium.stadium_id where concert.year  =  2014 group by stadium.stadium_id order by count(*) desc limit 1	concert_singer
+select stadium.name,  stadium.capacity from concert join stadium on concert.stadium_id  =  stadium.stadium_id where concert.year  >  2013 group by stadium.stadium_id order by count(*) desc limit 1	concert_singer
+select year from concert group by year order by count(*) desc limit 1	concert_singer
+select year from concert group by year order by count(*) desc limit 1	concert_singer
+select name from stadium where stadium_id not in (select stadium_id from concert)	concert_singer
+select name from stadium where stadium_id not in (select stadium_id from concert)	concert_singer
+select country from singer where age  >  40 intersect select country from singer where age  <  30	concert_singer
+select name from stadium except select stadium.name from concert join stadium on concert.stadium_id  =  stadium.stadium_id where concert.year  =  2014	concert_singer
+select name from stadium where stadium_id not in (select stadium_id from concert where year  =  2014)	concert_singer
+select concert.concert_name,  concert.theme from concert join singer_in_concert on concert.concert_id  =  singer_in_concert.concert_id group by concert.concert_id	concert_singer
+select concert.concert_name,  concert.theme,  count(*) from concert join singer_in_concert on concert.concert_id  =  singer_in_concert.concert_id group by concert.concert_name	concert_singer
+select singer.name,  count(*) from concert join singer_in_concert on concert.concert_id  =  singer_in_concert.concert_id group by concert.concert_name	concert_singer
+select singer.name,  count(*) from concert join singer_in_concert on concert.concert_id  =  singer_in_concert.concert_id group by concert.concert_id	concert_singer
+select name from singer_in_concert where year  =  2014	concert_singer
+select singer.name from concert join singer_in_concert on concert.concert_id  =  singer_in_concert.concert_id where concert.year  =  2014	concert_singer
+select singer.name,  singer.nation from singer join singer_in_concert on singer.singer_id  =  singer_in_concert.singer_id where singer.song_name  =  'hey'	concert_singer
+select name,  country from singer where song_name like '%hey%'	concert_singer
+select stadium.name,  stadium.location from concert join stadium on concert.stadium_id  =  stadium.stadium_id where concert.year  =  2014 intersect select stadium.location from concert join stadium on concert.stadium_id  =  stadium.stadium_id where concert.year  =  2015	concert_singer
+select stadium.name,  stadium.location from concert join stadium on concert.stadium_id  =  stadium.stadium_id where concert.year  =  2014 intersect select stadium.name,  stadium.location from concert join stadium on concert.stadium_id  =  stadium.stadium_id where concert.year  =  2015	concert_singer
+select count(*) from concert join stadium on concert.stadium_id  =  stadium.stadium_id order by stadium.capacity desc limit 1	concert_singer
+select count(*) from concert join stadium on concert.stadium_id  =  stadium.stadium_id order by stadium.capacity desc limit 1	concert_singer
+select count(*) from pets where weight  >  10	pets_1
+select count(*) from pets where weight  >  10	pets_1
+select weight from pets order by weight desc limit 1	pets_1
+select count(*) from has_pet join student on has_pet.stuid  =  student.stuid where student.fname  =  "dog"	pets_1
+select max(weight),  pettype from pets group by pettype	pets_1
+select max(weight),  pettype from pets group by pettype	pets_1
+select count(*) from pets where pet_age  <  20	pets_1
+select count(*) from pets where pet_age  >  20	pets_1
+select count(*) from pets join student on pets.petid  =  student.stuid where student.sex  =  'f'	pets_1
+select count(*) from pets join student on pets.petid  =  student.stuid where student.sex  =  "f"	pets_1
+select count(distinct pettype) from pets	pets_1
+select count(distinct pettype) from pets	pets_1
+select student.fname from has_pet join pets on has_pet.petid  =  pets.petid join student on has_pet.stuid  =  student.stuid where has_pet.pettype  =  "cat" or has_pet.pettype  =  "dog"	pets_1
+select student.fname from has_pet join student on has_pet.stuid  =  student.stuid where has_pet.pettype  =  "cat" or has_pet.pettype  =  "dog"	pets_1
+select student.fname from has_pet join pets on has_pet.petid  =  pets.petid join student on has_pet.stuid  =  student.stuid where has_pet.pettype  =  "cat" intersect select student.fname from has_pet join pets on has_pet.petid  =  pets.petid where has_pet.pettype  =  "dog"	pets_1
+select student.fname from has_pet join pets on has_pet.petid  =  pets.petid join student on has_pet.stuid  =  student.stuid where has_pet.pettype  =  "cats" intersect select student.fname from has_pet join pets on has_pet.petid  =  pets.petid where has_pet.pettype  =  "dogs"	pets_1
+select major,  age from student where stuid not in (select stuid from has_pet where pettype  =  'cat')	pets_1
+select major from student where stuid not in (select stuid from has_pet where pettype  =  "cat as a pet")	pets_1
+select stuid from student where stuid not in (select stuid from has_pet where pettype  =  'cat')	pets_1
+select stuid from student except select stuid from has_pet	pets_1
+select student.fname,  student.age from has_pet join student on has_pet.stuid  =  student.stuid where has_pet.pet_age  =  'dog' except select student.fname,  student.age from has_pet join pets on has_pet.petid  =  pets.petid where has_pet.pet_age  =  'cat'	pets_1
+select student.fname from student join has_pet on student.stuid  =  has_pet.stuid where has_pet.pet_age  =  'dog' and has_pet.pet_age  =  'cat'	pets_1
+select pettype,  weight from pets order by weight desc limit 1	pets_1
+select pettype,  count(*) from pets group by pettype order by count(*) desc limit 1	pets_1
+select petid,  weight from pets where pet_age  <  1	pets_1
+select pets.petid,  pets.weight from has_pet join pets on has_pet.petid  =  pets.petid where has_pet.pet_age  <  1	pets_1
+select pettype,  avg(pet_age),  max(pet_age) from pets group by pettype	pets_1
+select pettype,  avg(pet_age),  max(pet_age) from pets group by pettype	pets_1
+select avg(weight),  pettype from pets group by pettype	pets_1
+select pettype,  avg(weight) from pets group by pettype	pets_1
+select student.fname,  student.age from has_pet join student on has_pet.stuid  =  student.stuid where has_pet.petid  =  pets.petid	pets_1
+select distinct student.fname,  student.age from has_pet join student on has_pet.stuid  =  student.stuid	pets_1
+select petid from has_pet join student on has_pet.stuid  =  student.stuid where student.fname  =  "smith"	pets_1
+select pets.petid from has_pet join student on has_pet.stuid  =  student.stuid where student.lname  = 'smith'	pets_1
+select count(*),  petid from has_pet group by petid	pets_1
+select stuid,  count(*) from has_pet group by stuid	pets_1
+select student.fname,  student.sex from student join has_penet on student.stuid  =  has_penet.stuid group by has_penet.stuid having count(*)  >  1	pets_1
+select student.fname,  student.sex from has_pet join student on has_pet.stuid  =  student.stuid group by has_pet.stuid having count(*)  >  1	pets_1
+select student.lname from student join has_penet on student.stuid  =  has_penet.stuid where has_penet.pet_age  =  3	pets_1
+select student.lname from has_pet join student on has_pet.stuid  =  student.stuid where has_pet.pet_age  =  3	pets_1
+select avg(student.age) from has_pet join student on has_pet.stuid  =  student.stuid	pets_1
+select avg(student.age) from has_pet join pets on has_pet.petid  =  pets.petid	pets_1
+select count(*) from continents	car_1
+select count(*) from continents	car_1
+select continents.continent,  count(*) from countries join continents on countries.contid  =  continents.contid group by continents.continent	car_1
+select continents.continent,  countries.countryname,  count(*) from continents join countries on continents.contid  =  countries.countryid group by countries.countryname	car_1
+select count(*) from countries	car_1
+select count(*) from countries	car_1
+select maker,  count(*) from model_list group by maker	car_1
+select car_makers.fullname,  count(*) from car_makers join model_list on car_makers.id  =  model_list.modelid group by car_makers.maker	car_1
+select model from model_list order by horsepower limit 1	car_1
+select model from model_list order by horsepower desc limit 1	car_1
+select model from model_list where weight  >  (select avg(weight) from car_names)	car_1
+select model from model_list where weight  <  (select avg(weight) from car_names)	car_1
+select makers.fullname from car_makers join car_names on car_makers.id  =  car_names.make where car_names.year  =  1970	car_1
+select distinct car_makers.fullname from car_makers join car_names on car_makers.id  =  car_names.make where car_names.year  =  1970	car_1
+select car_names.make,  car_names.production from car_names join cars_data on car_names.make  =  cars_data.id order by cars_data.year asc limit 1	car_1
+select car_makers.maker,  car_names.make from car_makers join cars_data on car_makers.id  =  cars_data.id order by cars_data.year limit 1	car_1
+select distinct model from model_list where year  >  1980	car_1
+select distinct model from model_list where year  >  1980	car_1
+select continents.continent,  count(*) from car_makers join continents on car_makers.id  =  continents.continent group by continents.continent	car_1
+select continents.continent,  count(*) from car_makers join continents on car_makers.id  =  continents.continent group by car_makers.id	car_1
+select countryname from countries group by countryname order by count(*) desc limit 1	car_1
+select countryname from car_makers group by country order by count(*) desc limit 1	car_1
+select count(*),  model_list.maker,  model_names.fullname from model_list join car_makers on model_list.maker  =  car_makers.id group by model_names.maker	car_1
+select count(*),  model_list.maker,  model_names.fullname from model_list join car_makers on model_list.maker  =  car_makers.id group by model_names.maker	car_1
+select accelerate from car_names where make  =  "amc" and horsepower  =  "sw"	car_1
+select accelerate from car_data where horsepower  =  "sw"	car_1
+select count(*) from car_makers where country  =  "france"	car_1
+select count(*) from car_makers where country  =  'france'	car_1
+select count(*) from model_list where model  =  'usa'	car_1
+select count(*) from model_list where model  =  'united states'	car_1
+select avg(cars_data.mpg) from car_makers join cars_data on car_makers.id  =  cars_data.id where cars_data.cylinders  =  4	car_1
+select avg(car_makers.mg),  car_makers.country from car_makers join car_names on car_makers.id  =  car_names.make join car_names on car_names.make  =  car_names.make where car_names.cylinders  =  4	car_1
+select min(weight) from car_data where cylinders  =  8 order by year asc limit 1	car_1
+select min(weight) from car_data where cylinders  =  8 and year  =  1974	car_1
+select makers,  model from model_list	car_1
+select makers,  model from model_list	car_1
+select countryname,  id from countries group by countryname having count(*)  >=  1	car_1
+select countryname,  countryid from countries group by countryname having count(*)  >=  1	car_1
+select count(*) from cars_data where horsepower  >  150	car_1
+select count(*) from cars_data where horsepower  >  150	car_1
+select avg(weight),  year from car_data group by year	car_1
+select avg(weight),  year from car_data group by year	car_1
+select countryname from countries where countryname  =  'europe' group by countryname having count(*)  >=  3	car_1
+select countryname from countries where countryname  =  "european" group by countryname having count(*)  >=  3	car_1
+select max(horsepower),  max(maker),  make from model_list where cylinders  =  3	car_1
+select max(horsepower),  make from model_list group by make order by count(*) desc limit 3	car_1
+select model from model_list group by model order by count(*) desc limit 1	car_1
+select model from model_list order by mpg desc limit 1	car_1
+select avg(horsepower) from cars_data where year  <  1980	car_1
+select avg(horsepower) from cars_data where year  <  1980	car_1
+select avg(eddispl) from model_list where model  =  'volvo'	car_1
+select avg(edispl) from ars_data where merger  =  'volvos'	car_1
+select max(accelerate),  cylinders from car_data group by cylinders	car_1
+select max(accelerate),  cylinders from car_data group by cylinders	car_1
+select model from model_list group by model order by count(*) desc limit 1	car_1
+select model from model_list group by model order by count(*) desc limit 1	car_1
+select count(*) from cars_data where cylinders  >  4	car_1
+select count(*) from cars_data where cylinders  >  4	car_1
+select count(*) from cars_data where year  =  1980	car_1
+select count(*) from car_makers join car_names on car_makers.id  =  car_names.make where car_names.year  =  1980	car_1
+select count(*) from model_list join car_makers on model_list.maker  =  car_makers.id where car_makers.fullname  =  "american motor company"	car_1
+select count(*) from model_list join car_makers on model_list.maker  =  car_makers.id join model_names on model_list.model  =  car_names.make where car_names.fname  =  "american motor company"	car_1
+select model_list.fullname,  model_list.modelid from model_list join car_makers on model_list.modelid  =  car_makers.id group by model_list.modelid having count(*)  >  3	car_1
+select model_list.maker,  model_list.modelid from model_list join model_list on model_list.modelid  =  model_list.modelid group by model_list.maker having count(*)  >  3	car_1
+select distinct model from model_list where maker  =  "general motors" or weighing  >  3500	car_1
+select distinct model from model_list where maker  =  "general motors" or weight  >  3500	car_1
+select year from cars_data where weight  <  3000 intersect select year from cars_data where weight  <  4000	car_1
+select distinct year from cars_data where weight  <  4000 intersect select distinct year from cars_data where weight  >  3000	car_1
+select horsepower from car_data order by accelerate desc limit 1	car_1
+select horsepower from car_data group by horsepower order by count(*) desc limit 1	car_1
+select cylinders,  count(*) from car_data group by cylinders order by count(*) desc limit 1	car_1
+select count(*),  cylinders from model_list group by cylinders order by count(*) desc limit 1	car_1
+select count(*) from cars_data where accelerate  >  (select max(accelerate) from cars_data)	car_1
+select count(*) from cars_data where accelerate  >  (select max(accelerate) from cars_data group by horsepower)	car_1
+select count(*) from car_makers group by country having count(*)  >  2	car_1
+select count(*) from car_makers group by country having count(*)  >  2	car_1
+select count(*) from cars_data where cylinders  >  6	car_1
+select count(*) from car_data where cylinders  >  6	car_1
+select cars_data.cylinders,  model_list.model from model_list join car_names on model_list.model  =  car_names.model group by model_list.model order by count(*) desc limit 4	car_1
+select cylinder,  model from model_list group by model order by count(*) desc limit 4	car_1
+select car_makers.id,  car_names.make from car_names join cars_data on car_names.makeid  =  cars_data.makeid group by car_names.make order by count(*) desc limit 3	car_1
+select car_makers.id,  car_names.make,  car_names.make from car_makers join car_names on car_makers.id  =  car_names.make where car_names.horsepower  <  4	car_1
+select max(car_makers.miles) from car_makers join car_names on car_makers.id  =  car_names.make where car_names.cylinders  =  8 or car_names.year  <  1980	car_1
+select max(cars_data.mpg) from car_makers join cars_data on car_makers.id  =  cars_data.id where car_makers.cylinders  =  8 or car_names.year  <  1980	car_1
+select model from model_list where model  >  3500 except select model from model_list where model  =  'ord motor company'	car_1
+select distinct model from model_list where model  >  3500 except select distinct model from model_list where model  =  'foord motor company'	car_1
+select countryname from countries where countryid not in (select country from car_makers)	car_1
+select countryname from countries where countryid not in (select country from car_makers)	car_1
+select car_makers.id,  model_list.maker from model_list join car_makers on model_list.modelid  =  car_makers.id group by model_list.maker having count(*)  >=  2	car_1
+select car_makers.id,  model_list.maker from model_list join car_makers on model_list.modelid  =  car_makers.id group by model_list.maker having count(*)  >=  2 intersect select car_makers.id,  car_names.make from model_list join car_names on model_list.make  =  car_names.make group by car_names.id having count(*)  >  3	car_1
+select country_makers.id,  country_names.country from car_makers join country_names on car_makers.country  =  country_names.country where model_list.model  =  'fiat' group by model_list.country having count(*)  >  3	car_1
+select country_makers.id,  country_names.country from model_list join country on model_list.country  =  countries.countryid where model_list.maker  =  'fiat' group by model_list.country having count(*)  >  3	car_1
+select country from airlines where airline  =  "jetblue airways"	flight_2
+select country from airlines join airports on airlines.uid  =  airports.country where airports.country  =  "jetblue airways"	flight_2
+select abbreviation from airlines join airports on airlines.uid  =  airports.country where airlines.airline  =  "jetblue airways"	flight_2
+select distinct airlines.abbreviation from airlines join airports on airlines.uid  =  airports.country where airports.country  =  "jetblue airways"	flight_2
+select airlines.airline,  airlines.abbreviation from airlines join airports on airlines.uid  =  airports.country where airlines.abbreviation  =  "usa"	flight_2
+select airlines.airline,  airlines.abbreviation from airlines join airports on airlines.uid  =  airports.country where airports.countryabbrev  =  "usa"	flight_2
+select airportcode,  airportname from airports where country  =  "anthony"	flight_2
+select airportcode,  airportname from airports where city  =  "anthony"	flight_2
+select count(*) from airlines	flight_2
+select count(*) from airlines	flight_2
+select count(*) from airports	flight_2
+select count(*) from airports	flight_2
+select count(*) from flights	flight_2
+select count(*) from flights	flight_2
+select airline from airlines where abbreviation  =  'UAL'	flight_2
+select airline from airlines where abbreviation  =  'UAL'	flight_2
+select count(*) from airlines where country  =  "usa"	flight_2
+select count(*) from airlines where country  =  "usa"	flight_2
+select city,  country from airports where country  =  "alton"	flight_2
+select city,  country from airports where airportname  =  "alton"	flight_2
+select airportname from airports where airportcode  =  'ako'	flight_2
+select airportname from airports where airportcode  =  'ako'	flight_2
+select airportname from airports where city  =  'aberdeen'	flight_2
+select airportname from airports where country  =  'aberdeen'	flight_2
+select count(*) from flights where sourceairport  =  'apg'	flight_2
+select count(*) from flights where sourceairport  =  'apg'	flight_2
+select count(*) from flights where destairport  =  "aso"	flight_2
+select count(*) from flights join airlines on flights.airline  =  airlines.uid where airlines.country  =  "apt"	flight_2
+select count(*) from flights where sourceairport  =  "aberdeen"	flight_2
+select count(*) from flights where sourceairport  =  'aberdeen'	flight_2
+select count(*) from airports join flights on airports.country  =  flights.country where airports.city  =  "aberdeen"	flight_2
+select count(*) from flights where sourceairport  =  'aberdeen'	flight_2
+select sum(flights.flightno) from flights join airports on flights.airport  =  airports.city where airports.city  =  'alberdeen' intersect select count(*) from flights join airports on airports.city  =  airports.city where airports.city  =  'alshley'	flight_2
+select count(*) from flights join airlines on flights.airline  =  airlines.uid join airports on airlines.uid  =  airports.country where airports.city  =  "aberdeen" and airports.country  =  "alshley"	flight_2
+select count(*) from airlines join flights on airlines.uid  =  flights.airline where airlines.abbreviation  =  'jetblue airways'	flight_2
+select count(*) from flights join airlines on flights.airline  =  airlines.uid where airlines.country  =  "jetblue airways"	flight_2
+select count(*) from airlines join flights on airlines.uid  =  flights.sourceairport where airports.airportcode  =  'united airlines' and airports.airportname  =  'asy'	flight_2
+select count(*) from flights join airlines on flights.airline  =  airlines.uid join airports on airlines.uid  =  airports.country where airports.airportname  =  "as y airport"	flight_2
+select count(*) from flights where sourceairport  =  'united airlines' and destairport  =  'ahd'	flight_2
+select count(*) from flights join airlines on flights.airline  =  airlines.uid join airports on airlines.uid  =  airports.country where airports.airportname  =  "ahd"	flight_2
+select count(*) from airlines join flights on airlines.uid  =  flights.airline where airports.city  =  'alberdeen'	flight_2
+select count(*) from flights join airlines on flights.airline  =  airlines.uid where airlines.abbreviation  =  "united airlines" and airlines.country  =  "alberdeen"	flight_2
+select airports.city from airports join flights on airports.country  =  flights.sourceAirport group by airports.city order by count(*) desc limit 1	flight_2
+select city from airports group by city order by count(*) desc limit 1	flight_2
+select airports.city from airports join flights on airports.country  =  flights.destAirport group by airports.city order by count(*) desc limit 1	flight_2
+select city from airports group by city order by count(*) desc limit 1	flight_2
+select airports.airportcode from airports join flights on airports.country  =  flights.sourceairport order by flights.flightno desc limit 1	flight_2
+select airportcode from airports group by airportcode order by count(*) desc limit 1	flight_2
+select airportcode from airports group by airportcode order by count(*) desc limit 1	flight_2
+select airportcode from airports group by airportcode order by count(*) asc limit 1	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline group by airlines.airline order by count(*) desc limit 1	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline group by airlines.airline order by count(*) desc limit 1	flight_2
+select airlines.abbreviation,  airlines.country from airlines join flights on airlines.uid  =  flights.airline group by airlines.abbreviation order by count(*) desc limit 1	flight_2
+select airlines.abbreviation,  airports.country from airlines join flights on airlines.uid  =  flights.airline group by airlines.abbr order by count(*) desc limit 1	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.destairport where flights.sourceairport  =  'ahd'	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline where flights.sourceairport  =  "ahd"	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.sourceairport where airports.airportname  =  'ahd'	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline where flights.destairport  =  "ahd"	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.sourceairport where airports.country  =  'apg' intersect select airlines.airline from airports join flights on airports.country  =  flights.destairport where airports.country  =  'cvo'	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline where airports.city  =  "apg" intersect select airlines.uid from airlines join airports on airlines.uid  =  airports.uid where airports.city  =  "cvo"	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.sourceairport where airports.airportname  =  'cvo' except select airlines.airline from airlines join flights on airlines.uid  =  flights.destairport where airports.airportname  =  'apg'	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline where flights.sourceairport  =  "cvo" and flights.destairport  =  "apg"	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline group by airlines.uid having count(*)  >=  10	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline group by airlines.uid having count(*)  >=  10	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.airline where flights.flightno  >  200	flight_2
+select airlines.airline from airlines join flights on airlines.uid  =  flights.sourceAirport group by airlines.airline having count(*)  <  200	flight_2
+select flightno from airlines where airline  =  "united airlines"	flight_2
+select flightno from flights where sourceairport  =  'united airlines'	flight_2
+select flightno from flights where sourceairport  =  "apg"	flight_2
+select flightno from flights where sourceairport  =  "apg"	flight_2
+select flightno from flights where sourceairport  =  "apg"	flight_2
+select flightno from flights where sourceairport  =  'apg'	flight_2
+select flightno from flights where sourceairport  =  "aberdeen"	flight_2
+select flightno from flights where sourceairport  =  'aberdeen'	flight_2
+select flightno from flights where sourceairport  =  "aberdeen"	flight_2
+select flightno from flights where sourceairport  =  'aberdeen'	flight_2
+select count(*) from flights where city  =  "aberdeen" or city  =  "abilene"	flight_2
+select count(*) from flights where lifeno  =  "aberdeen" or lifeno  =  "abilene"	flight_2
+select airportname from airports where country not in (select country from flights)	flight_2
+select distinct airportname from airports where country  =  "departing" or country  =  "arriving"	flight_2
+select count(*) from employee	employee_hire_evaluation
+select count(*) from employee	employee_hire_evaluation
+select name from employee order by age asc	employee_hire_evaluation
+select name from employee order by age asc	employee_hire_evaluation
+select city,  count(*) from employee group by city	employee_hire_evaluation
+select count(*),  city from employee group by city	employee_hire_evaluation
+select city from employee where age  >  30	employee_hire_evaluation
+select city from employee where age  >  30 group by city having count(*)  >  1	employee_hire_evaluation
+select count(*),  location from shop group by location	employee_hire_evaluation
+select count(*),  location from shop group by location	employee_hire_evaluation
+select manager_name,  district from shop order by number_products desc limit 1	employee_hire_evaluation
+select manager_name,  district from shop order by number_products desc limit 1	employee_hire_evaluation
+select min(number_products),  max(number_products) from shop	employee_hire_evaluation
+select min(number_products),  max(number_products) from shop	employee_hire_evaluation
+select name,  location,  district from shop order by number_products desc	employee_hire_evaluation
+select name,  location,  district from shop order by number_products desc	employee_hire_evaluation
+select manager_name from shop where number_products  >  (select avg(number_products) from shop)	employee_hire_evaluation
+select name from shop where number_products  >  (select avg(number_products) from shop)	employee_hire_evaluation
+select employee.name from employee join evaluation on employee.employee_id  =  evaluation.employee_id group by evaluation.employee_id order by count(*) desc limit 1	employee_hire_evaluation
+select employee.name from employee join evaluation on employee.employ_id  =  evaluation.employee_id group by employee.employee_id order by count(*) desc limit 1	employee_hire_evaluation
+select name from employee order by bonus desc limit 1	employee_hire_evaluation
+select name from employee order by bonus desc limit 1	employee_hire_evaluation
+select name from employee where employee_id not in (select employee_id from evaluation)	employee_hire_evaluation
+select name from employee where employee_id not in (select employee_id from evaluation)	employee_hire_evaluation
+select shop.name from hiring join employee on hiring.employee_id  =  employee.employee_id group by hiring.shop_id order by count(*) desc limit 1	employee_hire_evaluation
+select shop.name from employee join shop on employee.employee_id  =  shop.shop_id group by employee.name order by count(*) desc limit 1	employee_hire_evaluation
+select name from shop where shop_id not in (select shop_id from hiring)	employee_hire_evaluation
+select name from shop where shop_id not in (select shop_id from hiring)	employee_hire_evaluation
+select count(*),  shop.name from hiring join employee on hiring.employee_id  =  employee.employee_id group by hiring.shop_id	employee_hire_evaluation
+select hiring.number_products,  shop.name from hiring join employee on hiring.employee_id  =  employee.employee_id group by hiring.shop_id	employee_hire_evaluation
+select sum(bonus) from evaluation	employee_hire_evaluation
+select sum(bonus) from evaluation	employee_hire_evaluation
+select * from hiring	employee_hire_evaluation
+select * from hiring	employee_hire_evaluation
+select district from shop where number_products  <  3000 intersect select district from shop where number_products  >  10000	employee_hire_evaluation
+select district from shop where number_products  <  3000 intersect select district from shop where number_products  >  10000	employee_hire_evaluation
+select count(distinct location) from shop	employee_hire_evaluation
+select count(distinct location) from shop	employee_hire_evaluation
+select count(*) from documents	cre_Doc_Template_Mgt
+select count(*) from documents	cre_Doc_Template_Mgt
+select document_id,  document_name,  document_description from documents	cre_Doc_Template_Mgt
+select document_id,  document_name,  document_description from documents	cre_Doc_Template_Mgt
+select document_name,  template_id from documents where document_description like '%w%'	cre_Doc_Template_Mgt
+select documents.document_name,  documents.template_id from documents join templates on documents.template_id  =  templates.template_id where documents.document_description like '%w%'	cre_Doc_Template_Mgt
+select documents.document_id,  documents.template_id,  documents.document_description from documents join templates on documents.template_id  =  templates.template_id where documents.document_name  =  "robin cv"	cre_Doc_Template_Mgt
+select documents.document_id,  documents.template_id,  documents.document_description from documents join templates on documents.template_id  =  templates.template_id where documents.document_name  =  "robin cv"	cre_Doc_Template_Mgt
+select count(distinct template_id) from documents	cre_Doc_Template_Mgt
+select count(distinct template_id) from documents	cre_Doc_Template_Mgt
+select count(*) from documents join templates on documents.template_id  =  templates.template_id where templates.template_type_code  =  'ppt'	cre_Doc_Template_Mgt
+select count(*) from documents where template_type_code  =  "ppt"	cre_Doc_Template_Mgt
+select template_id,  count(*) from documents group by template_id	cre_Doc_Template_Mgt
+select documents.template_id,  count(*) from documents join templates on documents.template_id  =  templates.template_id group by documents.template_id	cre_Doc_Template_Mgt
+select templates.template_id,  templates.template_type_code from documents join templates on documents.template_id  =  templates.template_id group by documents.template_id order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select template_id,  template_type_code from documents group by template_id order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select template_id from templates group by template_id having count(*)  >  1	cre_Doc_Template_Mgt
+select template_id from templates group by template_id having count(*)  >  1	cre_Doc_Template_Mgt
+select template_id from templates except select template_id from documents	cre_Doc_Template_Mgt
+select template_id from templates except select template_id from documents	cre_Doc_Template_Mgt
+select count(*) from templates	cre_Doc_Template_Mgt
+select count(*) from templates	cre_Doc_Template_Mgt
+select template_id,  version_number,  template_type_code from templates	cre_Doc_Template_Mgt
+select template_id,  version_number,  template_type_code from templates	cre_Doc_Template_Mgt
+select distinct template_type_code from templates	cre_Doc_Template_Mgt
+select distinct template_type_code from ref_template_types	cre_Doc_Template_Mgt
+select template_id from templates where template_type_code  =  'pp' or template_type_code  =  'ppt'	cre_Doc_Template_Mgt
+select template_id from templates where template_type_code  =  "pp" or template_type_code  =  "ppt"	cre_Doc_Template_Mgt
+select count(*) from templates where template_type_code  =  "cv"	cre_Doc_Template_Mgt
+select count(*) from templates where template_type_code  =  "cv"	cre_Doc_Template_Mgt
+select version_number,  template_type_code from templates where version_number  >  5	cre_Doc_Template_Mgt
+select version_number,  template_type_code from templates where version_number  >  5	cre_Doc_Template_Mgt
+select template_type_code,  count(*) from templates group by template_type_code	cre_Doc_Template_Mgt
+select template_type_code,  count(*) from templates group by template_type_code	cre_Doc_Template_Mgt
+select template_type_code from templates group by template_type_code order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select template_type_code from templates group by template_type_code order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select template_type_code from templates group by template_type_code having count(*)  <  3	cre_Doc_Template_Mgt
+select template_type_code from templates group by template_type_code having count(*)  >  3	cre_Doc_Template_Mgt
+select version_number,  template_type_code from templates order by version_number asc limit 1	cre_Doc_Template_Mgt
+select version_number,  template_type_code from templates order by version_number asc limit 1	cre_Doc_Template_Mgt
+select ref_template_types.template_type_code from documents join ref_template_types on documents.template_id  =  ref_template_types.template_id where documents.document_name  =  "data base"	cre_Doc_Template_Mgt
+select ref_template_types.template_type_code from documents join ref_template_types on documents.template_id  =  ref_template_types.template_id where documents.document_name  =  "data base"	cre_Doc_Template_Mgt
+select documents.document_name from documents join templates on documents.template_id  =  templates.template_id where templates.template_type_code  =  "bk"	cre_Doc_Template_Mgt
+select documents.document_name from documents join templates on documents.template_id  =  templates.template_id where templates.template_type_code  =  "bk"	cre_Doc_Template_Mgt
+select template_type_code,  count(*) from documents group by template_type_code	cre_Doc_Template_Mgt
+select template_type_code,  count(*) from documents group by template_type_code	cre_Doc_Template_Mgt
+select template_type_code from documents group by template_type_code order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select template_type_code from documents group by template_type_code order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select template_type_code from ref_template_types except select template_type_code from ref_template_types	cre_Doc_Template_Mgt
+select template_type_code from ref_template_types where template_type_code not in (select template_type_code from ref_template_types)	cre_Doc_Template_Mgt
+select template_type_code,  template_type_description from ref_template_types	cre_Doc_Template_Mgt
+select template_type_code,  template_type_description from ref_template_types	cre_Doc_Template_Mgt
+select template_type_description from ref_template_types where template_type_code  =  "ad"	cre_Doc_Template_Mgt
+select template_type_description from ref_template_types where template_type_code  =  "ad"	cre_Doc_Template_Mgt
+select template_type_code from ref_template_types where template_type_description  =  "book"	cre_Doc_Template_Mgt
+select template_type_code from ref_template_types where template_type_description  =  "book"	cre_Doc_Template_Mgt
+select distinct ref_template_types.template_type_description from documents join ref_template_types on documents.template_type_code  =  ref_template_types.template_type_code	cre_Doc_Template_Mgt
+select distinct templates.template_details from documents join templates on documents.template_id  =  templates.template_id	cre_Doc_Template_Mgt
+select template_id from ref_template_types where template_type_description  =  "presentation"	cre_Doc_Template_Mgt
+select template_id from templates where template_details  =  'presentation'	cre_Doc_Template_Mgt
+select count(*) from paragraphs	cre_Doc_Template_Mgt
+select count(*) from paragraphs	cre_Doc_Template_Mgt
+select count(*) from documents join paragraphs on documents.document_id  =  paragraphs.document_id where documents.document_name  = 'summer show'	cre_Doc_Template_Mgt
+select count(*) from paragraphs join documents on paragraphs.document_id  =  documents.document_id where documents.document_name  = 'summer show'	cre_Doc_Template_Mgt
+select other_details from paragraphs where paragraph_text  =  'korea'	cre_Doc_Template_Mgt
+select other_details from paragraphs where paragraph_text like '%korea%'	cre_Doc_Template_Mgt
+select paragraph_id,  paragraph_text from paragraphs where document_name  =  'welcome to ny'	cre_Doc_Template_Mgt
+select paragraph_id,  paragraph_text from paragraphs where document_name  =  'welcome to ny'	cre_Doc_Template_Mgt
+select paragraphs.paragraph_text from documents join paragraphs on documents.document_id  =  paragraphs.document_id where documents.document_name  =  "customer reviews"	cre_Doc_Template_Mgt
+select paragraphs.paragraph_text from documents join paragraphs on documents.document_id  =  paragraphs.document_id where documents.document_name  =  'customer reviews'	cre_Doc_Template_Mgt
+select documents.document_id,  count(*) from documents join paragraphs on documents.document_id  =  paragraphs.document_id group by documents.document_id	cre_Doc_Template_Mgt
+select document_id,  count(*) from paragraphs group by document_id order by count(*)	cre_Doc_Template_Mgt
+select documents.document_id,  documents.document_name,  count(*) from documents join paragraphs on documents.document_id  =  paragraphs.document_id group by documents.document_id	cre_Doc_Template_Mgt
+select documents.document_id,  paragraphs.paragraph_id,  count(*) from documents join paragraphs on documents.document_id  =  paragraphs.document_id group by documents.document_id	cre_Doc_Template_Mgt
+select document_id from paragraphs group by document_id having count(*)  >=  2	cre_Doc_Template_Mgt
+select documents.document_id from documents join paragraphs on documents.document_id  =  paragraphs.document_id group by documents.document_id having count(*)  >=  2	cre_Doc_Template_Mgt
+select documents.document_id,  documents.document_name from documents join paragraphs on documents.document_id  =  paragraphs.document_id order by paragraphs.paragraph_text limit 1	cre_Doc_Template_Mgt
+select documents.document_id,  documents.document_name from documents join paragraphs on documents.document_id  =  paragraphs.document_id group by documents.document_id order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select document_id from paragraphs group by document_id order by count(*) asc limit 1	cre_Doc_Template_Mgt
+select document_id from paragraphs group by document_id order by count(*) desc limit 1	cre_Doc_Template_Mgt
+select document_id from paragraphs group by document_id having count(*)  >=  2	cre_Doc_Template_Mgt
+select documents.document_id from documents join paragraphs on documents.document_id  =  paragraphs.document_id where paragraphs.paragraph_text between 1 and 2	cre_Doc_Template_Mgt
+select document_id from paragraphs where paragraph_text  =  'brazil' intersect select document_id from paragraphs where paragraph_text  =  'icreland'	cre_Doc_Template_Mgt
+select document_id from paragraphs where paragraph_text  =  'brazil' intersect select document_id from paragraphs where paragraph_text  =  'icreland'	cre_Doc_Template_Mgt
+select count(*) from course_teach	course_teach
+select count(*) from course_teach	course_teach
+select name from teacher order by age asc	course_teach
+select name from teacher order by age asc	course_teach
+select age,  hometown from teacher	course_teach
+select age,  hometown from teacher	course_teach
+select name from teacher where hometown!= "little lever urban district"	course_teach
+select name from teacher where hometown!= "little lever urban district"	course_teach
+select name from teacher where age  =  32 or age  =  33	course_teach
+select name from teacher where age  =  32 or age  =  33	course_teach
+select hometown from teacher order by age desc limit 1	course_teach
+select name from teacher order by age desc limit 1	course_teach
+select teacher.hometown,  count(*) from teacher join course_arrange on teacher.teacher_id  =  course_arrange.teacher_id group by teacher.hometown	course_teach
+select hometown,  count(*) from teacher group by hometown	course_teach
+select hometown from teacher group by hometown order by count(*) desc limit 1	course_teach
+select hometown from teacher group by hometown order by count(*) desc limit 1	course_teach
+select hometown from teacher group by hometown having count(*)  >=  2	course_teach
+select t1.name from course_arrange as t1 join teacher as t2 on t1.teacher_id  =  t2.teacher_id group by t1.teacher_id having count(*)  >=  2	course_teach
+select teacher.name,  course.course from course_arrange join course on course_arrange.course_id  =  course.course_id join teacher on course_arrange.teacher_id  =  teacher.teacher_id	course_teach
+select teacher.name,  course.course from course join teacher on course.course_id  =  teacher.teacher_id group by course.course_id	course_teach
+select teacher.name,  course.course from course_arrange join course on course_arrange.course_id  =  course.course_id order by course.name asc	course_teach
+select teacher.name,  course.course from course_arrange join course on course_arrange.course_id  =  course.course_id order by teacher.name	course_teach
+select teacher.name from course join teacher on course.course_id  =  teacher.teacher_id where course.course  = 'math'	course_teach
+select teacher.name from course join course_arrange on course.course_id  =  course_arrange.course_id join teacher on course_arrange.teacher_id  =  teacher.teacher_id where course.course  =  "math"	course_teach
+select teacher.name,  count(*) from course_arrange join course on course_arrange.course_id  =  course.course_id group by course.course_id	course_teach
+select teacher.name,  count(*) from course_arrange join teacher on course_arrange.teacher_id  =  teacher.teacher_id group by course_arrange.teacher_id	course_teach
+select teacher.name from course_arrange join teacher on course_arrange.teacher_id  =  teacher.teacher_id group by course_arrange.teacher_id having count(*)  >=  2	course_teach
+select teacher.name from course_arrange join teacher on course_arrange.teacher_id  =  teacher.teacher_id group by course_arrange.teacher_id having count(*)  >=  2	course_teach
+select name from teacher where teacher_id not in (select teacher_id from course_arrange)	course_teach
+select teacher.name from course_teach join teacher on course_teach.teacher_id  =  teacher.teacher_id where course.course_id not in (select course_id from course_arrange)	course_teach
+select count(*) from visitor where age  >  30	museum_visit
+select name from visitor where level_of_membership  >  4 order by level_of_membership desc	museum_visit
+select avg(visitor.age) from visit join visitor on visit.visitor_id  =  visitor.id where visitor.level_of_membership  >  4	museum_visit
+select name,  level_of_membership from visitor where level_of_membership  >  4 order by age desc	museum_visit
+select museum.museum_id,  museum.name from museum join visit on museum.museum_id  =  visit.museum_id group by visit.museum_id order by count(*) desc limit 1	museum_visit
+select avg(num_of_staff) from museum where open_year  <  2009	museum_visit
+select open_year,  num_of_staff from museum where name  =  "plaza museum"	museum_visit
+select name from museum where num_of_staff  >  (select min(num_of_staff) from museum where open_year  >  2010)	museum_visit
+select visit.visitor_id,  visit.name,  visit.age from visit join visit on visit.visitor_id  =  visit.visitor_id group by visit.visitor_id having count(*)  >  1	museum_visit
+select visit.visitor_id,  visit.name,  visitor.level_of_membership from visit join visit on visit.visitor_id  =  visit.visitor_id group by visit.visitor_id order by sum(visit.total_spent) desc limit 1	museum_visit
+select visit.visitor_id,  museum.name from visit join museum on visit.museum_id  =  museum.museum_id group by visit.visitor_id order by count(*) desc limit 1	museum_visit
+select name from museum where museum_id not in (select museum_id from visit)	museum_visit
+select visitor.name,  visitor.age from visit join visitor on visit.visitor_id  =  visitor.id group by visit.visitor_id order by count(*) desc limit 1	museum_visit
+select avg(total_spent),  max(total_spent) from visit	museum_visit
+select sum(visit.total_spent) from visit join visitor on visit.visitor_id  =  visitor.id where visitor.level_of_membership  =  1	museum_visit
+select visit.name from visit join museum on visit.museum_id  =  museum.museum_id where museum.open_year  <  2009 intersect select visit.name from visit join museum on visit.museum_id  =  museum.museum_id where museum.open_year  >  2011	museum_visit
+select count(*) from visit where visitor_id not in (select visitor_id from museum where open_year  >  2010)	museum_visit
+select count(*) from museum where open_year  >  2013 or open_year  <  2008	museum_visit
+select count(*) from players	wta_1
+select count(*) from players	wta_1
+select count(*) from matches	wta_1
+select match_num from matches	wta_1
+select first_name,  last_name,  birth_date from players where country_code  =  "usa"	wta_1
+select first_name,  birth_date from players where country_code  =  "usa"	wta_1
+select avg(loser_age),  avg(winner_age) from matches	wta_1
+select avg(loser_age),  avg(winner_age) from matches	wta_1
+select avg(winner_rank) from matches	wta_1
+select avg(winner_rank) from matches	wta_1
+select max(loser_rank) from matches	wta_1
+select best_of from matches	wta_1
+select count(distinct country_code) from players	wta_1
+select count(distinct country_code) from players	wta_1
+select count(distinct loser_name) from matches	wta_1
+select count(distinct loser_name) from matches	wta_1
+select tourney_name from matches group by tourney_name having count(*)  >  10	wta_1
+select tourney_name from matches where match_num  >  10	wta_1
+select winner_name from players where year  =  2013 intersect select winner_name from players where year  =  2016	wta_1
+select first_name,  last_name from players where year  =  2013 intersect select first_name from players where year  =  2016	wta_1
+select count(*) from matches where year = 2013 or year = 2016	wta_1
+select count(*) from matches where year  =  2013 or year  =  2016	wta_1
+select country_code,  first_name from players where country_code  =  "wa championships" intersect select country_code,  first_name from players where country_code  =  "australian open"	wta_1
+select first_name,  country_code from players where hand  =  "wta championships" intersect select first_name,  country_code from players where hand  =  "australian open"	wta_1
+select first_name,  country_code from players order by year asc limit 1	wta_1
+select first_name,  country_code from players order by year asc limit 1	wta_1
+select first_name,  last_name from players order by birth_date	wta_1
+select first_name,  last_name from players order by birth_date	wta_1
+select first_name,  last_name from players where hand  =  'l' order by birth_date	wta_1
+select first_name,  last_name from players order by birth_date	wta_1
+select first_name,  country_code from players order by tours desc limit 1	wta_1
+select first_name,  country_code from players order by tours desc limit 1	wta_1
+select year from matches group by year order by count(*) desc limit 1	wta_1
+select year from matches group by year order by count(*) desc limit 1	wta_1
+select winner_name,  winner_rank_points from matches group by winner_name order by count(*) desc limit 1	wta_1
+select winner_name,  count(*) from matches group by winner_name order by count(*) desc limit 1	wta_1
+select winner_name from rankings join matches on rankings.player_id  =  matches.player_id where rankings.ranking_points  =  (select max(rankings_points) from rankings join matches on rankings.player_id  =  matches.player_id where tourney_name  =  "australian open tourney")	wta_1
+select winner_name from rankings where ranking_points  =  "australian open tournament" group by winner_name order by count(*) desc limit 1	wta_1
+select loser_name,  winner_name from matches order by minutes desc limit 1	wta_1
+select winner_name,  loser_name from matches order by match_num desc limit 1	wta_1
+select avg(rankings.ranking),  players.first_name from players join ranking on players.player_id  =  ranking.player_id group by players.player_id	wta_1
+select players.first_name,  avg(rankings.ranking_points) from players join rankings on players.player_id  =  rankings.player_id	wta_1
+select sum(rankings.ranking_points),  players.first_name from players join ranking on players.player_id  =  ranking.player_id group by players.player_id	wta_1
+select players.first_name,  rankings.ranking_points from players join rankings on players.player_id  =  rankings.player_id	wta_1
+select country_code,  count(*) from players group by country_code	wta_1
+select country_code,  count(*) from players group by country_code	wta_1
+select country_code from players group by country_code order by count(*) desc limit 1	wta_1
+select country_code from players group by country_code order by count(*) desc limit 1	wta_1
+select country_code from players group by country_code having count(*)  >  50	wta_1
+select country_code from players group by country_code having count(*)  >  50	wta_1
+select sum(tours),  ranking_date from rankings group by ranking_date	wta_1
+select sum(tours),  ranking_date from rankingings group by ranking_date	wta_1
+select count(*),  year from matches group by year	wta_1
+select count(*),  year from matches group by year	wta_1
+select winner_name,  winner_rank from matches order by score desc limit 3	wta_1
+select winner_name,  rankings.ranking from matches join rankings on matches.player_id  =  rankings.player_id group by winner_name order by count(*) desc limit 3	wta_1
+select count(distinct winner_name) from players where country_code  =  "wa championships" intersect select count(distinct winner_name) from players where country_code  =  "usa"	wta_1
+select count(*) from matches join players on matches.player_id  =  players.player_id join players on players.player_id  =  players.player_id where players.first_name  =  "wwa championship"	wta_1
+select players.first_name,  players.country_code,  players.birth_date from players join matches on players.player_id  =  matches.player_id group by players.player_id order by count(*) desc limit 1	wta_1
+select players.first_name,  players.country_code,  players.birth_date from players join rankings on players.player_id  =  rankings.player_id group by players.player_id order by count(*) desc limit 1	wta_1
+select hand,  count(*) from players group by hand	wta_1
+select hand,  count(*) from players group by hand	wta_1
+select count(*) from ship where ship_type  =  'captureured'	battle_death
+select name,  tonnage from ship order by name desc	battle_death
+select name,  date,  result from battle	battle_death
+select max(tonnage),  min(tonnage),  max(tonnage) from death	battle_death
+select avg(injured),  ship.name from death join ship on death.caused_by_ship_id  =  ship.lost_in_battle	battle_death
+select death.injured,  death.injured from death join ship on death.caused_by_ship_id  =  ship.id where ship.tonnage  =  't'	battle_death
+select name,  result from battle where bulgarian_commander!= 'boril'	battle_death
+select distinct battle.id,  battle.name from death join ship on death.caused_by_ship_id  =  ship.lost_in_battle where ship.ship_type  =  'brig'	battle_death
+select battle.id,  battle.name from death join battle on death.caused_by_ship_id  =  battle.id where death.killed  >  10	battle_death
+select ship.id,  death.name from death join ship on death.caused_by_ship_id  =  ship.lost_in_battle group by death.injured order by count(*) desc limit 1	battle_death
+select distinct name from battle where bulgarian_commander  =  'kaloyan' intersect select distinct name from battle where latin_commander  =  'baldwin i'	battle_death
+select count(distinct result) from battle	battle_death
+select count(*) from battle where id not in (select lost_in_battle from ship where tonnage  =  '225')	battle_death
+select battle.name,  battle.date from ship join battle on ship.lost_in_battle  =  battle.id join death on death.caused_by_ship_id  =  death.caused_by_ship_id where ship.ship_type  =  'hms atalanta'	battle_death
+select battle.name,  battle.result,  battle.bulgarian_commander from battle join ship on battle.id  =  ship.lost_in_battle where ship.ship_type  =  'english channel'	battle_death
+select death.note from death join death on death.id  =  death.id where death.note like '%ast%'	battle_death
+select address_id from addresses where line_1 = 1 and line_2 = 2	student_transcripts_tracking
+select addresses.line_1,  addresses.line_2 from addresses join addresses on addresses.address_id  =  addresses.address_id	student_transcripts_tracking
+select count(*) from courses	student_transcripts_tracking
+select count(*) from courses	student_transcripts_tracking
+select course_name from courses where course_description  =  "math"	student_transcripts_tracking
+select course_description from courses where course_name  =  "math"	student_transcripts_tracking
+select addresses.zip_postcode from addresses join addresses on addresses.address_id  =  addresses.address_id where addresses.city  =  "port chela"	student_transcripts_tracking
+select addresses.zip_postcode from addresses join addresses on addresses.address_id = addresses.address_id where addresses.city = "port chela"	student_transcripts_tracking
+select department_name,  department_id from degree_programs group by department_name order by count(*) desc limit 1	student_transcripts_tracking
+select department_name,  department_id from degree_programs group by department_name order by count(*) desc limit 1	student_transcripts_tracking
+select count(*) from departments	student_transcripts_tracking
+select count(distinct department_name) from departments	student_transcripts_tracking
+select count(distinct degree_summary_name) from degree_programs	student_transcripts_tracking
+select count(distinct degree_summary_name) from degree_programs	student_transcripts_tracking
+select degree_programs.degree_summary_name from degree_programs join department_programs on degree_programs.department_id  =  department_programs.department_id where department_name  =  "engineering"	student_transcripts_tracking
+select degree_programs.degree_summary_name from degree_programs join department on degree_programs.department_id  =  department.department_id where department.department_name  =  "engineering"	student_transcripts_tracking
+select section_name,  section_description from sections	student_transcripts_tracking
+select section_name,  section_description from sections	student_transcripts_tracking
+select courses.course_name,  courses.course_id from courses join sections on courses.course_id = sections.course_id group by courses.course_id having count(*)  >=  2	student_transcripts_tracking
+select courses.course_name,  courses.course_id from courses join sections on courses.course_id  =  sections.course_id group by courses.course_id having count(*)  <  2	student_transcripts_tracking
+select section_name from sections order by section_name asc	student_transcripts_tracking
+select section_name from sections order by section_name desc	student_transcripts_tracking
+select semester_name,  student_id from semesters group by semester_id order by count(*) desc limit 1	student_transcripts_tracking
+select semester_name,  student_id from students group by semester_name order by count(*) desc limit 1	student_transcripts_tracking
+select department_description from departmentments where department_name like '%computer%'	student_transcripts_tracking
+select department_description from departmentments where department_name like '%computer%'	student_transcripts_tracking
+select student_enrolment.first_name,  student_enrolment.middle_name,  student_enrolment.last_name,  degree_programs.degree_program_id from student_enrolment join degree_programs on student_enrolment.degree_program_id  =  degree_programs.degree_program_id group by student_enrolment.semester_id	student_transcripts_tracking
+select student_enrolment.first_name,  student_enrolment.middle_name,  student_enrolment.last_name from student_enrolment join student_enrolment on student_enrolment.student_enrolment_id  =  student_enrolment.student_enrolment_id group by student_enrolment.student_enrolment_id having count(*)  =  2	student_transcripts_tracking
+select first_name,  middle_name,  last_name from student_enrolment where degree_program_id  =  "bachelor"	student_transcripts_tracking
+select student_enrolment.first_name,  student_enrolment.middle_name,  student_enrolment.last_name from student_enrolment join student_enrolment_courses on student_enrolment.student_enrolment_id  =  student_enrolment.student_enrolment_id where student_enrolment.degree_program_id  =  "bachelors"	student_transcripts_tracking
+select degree_programs.degree_program_id from student_enrolment join degree_programs on student_enrolment.degree_program_id  =  degree_programs.degree_program_id group by degree_programs.degree_program_id order by count(*) desc limit 1	student_transcripts_tracking
+select degree_programs.degree_summary_name from degree_programs join student_enrolment on degree_programs.degree_program_id  =  student_enrolment.degree_program_id group by degree_programs.degree_summary_name order by count(*) desc limit 1	student_transcripts_tracking
+select degree_programs.degree_program_id,  degree_programs.degree_summary_name from student_enrolment join degree_programs on student_enrolment.degree_program_id  =  degree_programs.degree_program_id group by degree_programs.degree_program_id order by count(*) desc limit 1	student_transcripts_tracking
+select degree_programs.degree_program_id,  degree_programs.degree_summary_name from degree_programs join student_enrolment on degree_programs.degree_program_id  =  student_enrolment.degree_program_id group by degree_programs.degree_program_id order by count(*) desc limit 1	student_transcripts_tracking
+select student_enrolment.student_id,  student_enrolment.first_name,  student_enrolment.middle_name,  student_enrolment.last_name,  count(*) from student_enrolment join student_enrolment on student_enrolment.student_enrolment_id  =  student_enrolment.student_enrolment_id group by student_enrolment.student_enrolment_id order by count(*) desc limit 1	student_transcripts_tracking
+select student_enrolment.first_name,  student_enrolment.middle_name,  student_enrolment.last_name,  count(*) from student_enrolment join student_enrolment on student_enrolment.student_enrolment_id  =  student_enrolment.student_enrolment_id group by student_enrolment.student_enrolment_id order by count(*) desc limit 1	student_transcripts_tracking
+select semester_name from semesters where semester_id not in (select semester_id from student_enrolment)	student_transcripts_tracking
+select semester_name from semesters where semester_id not in (select semester_id from student_enrolment)	student_transcripts_tracking
+select courses.course_name from courses join student_enrolment_course on courses.course_id  =  student_enrolment_course.course_id	student_transcripts_tracking
+select courses.course_name from courses join student_enrolment_course on courses.course_id  =  student_enrolment_course.course_id	student_transcripts_tracking
+select courses.course_name from courses join student_enrolment_course on courses.course_id  =  student_enrolment_course.course_id group by courses.course_id order by count(*) desc limit 1	student_transcripts_tracking
+select courses.course_name from courses join student_enrolment_course on courses.course_id  =  student_enrolment_course.course_id group by courses.course_id order by count(*) desc limit 1	student_transcripts_tracking
+select last_name from students where first_name!= "north" and last_name!= "carolina"	student_transcripts_tracking
+select last_name from students where first_name!= "north" and last_name!= "carolina"	student_transcripts_tracking
+select transcript_contents.transcript_date,  transcript_contents.transcript_id from transcript_contents join transcript_contents on transcript_contents.transcript_id  =  transcript_contents.transcript_id group by transcript_contents.transcript_id having count(*)  >=  2	student_transcripts_tracking
+select transcript_contents.transcript_date,  transcript_contents.transcript_id from transcript_contents join student_enrolment_courses on transcript_contents.transcript_id  =  student_enrolment_courses.transcript_id group by transcript_contents.transcript_id having count(*)  >=  2	student_transcripts_tracking
+select t1.cell_mobile_number from students as t1 join addresses as t2 on t1.address_id  =  t2.address_id where t2.first_name  =  "timmothy" and t1.last_name  =  "ward"	student_transcripts_tracking
+select cell_mobile_number from student_enrolment where first_name = "timmothy ward"	student_transcripts_tracking
+select first_name,  middle_name,  last_name from student_enrolment	student_transcripts_tracking
+select first_name,  middle_name,  last_name from student_enrolment order by date_first_registered asc limit 1	student_transcripts_tracking
+select first_name,  middle_name,  last_name from semesters order by date_first_registered desc limit 1	student_transcripts_tracking
+select first_name,  middle_name,  last_name from student_enrolment order by date_left asc limit 1	student_transcripts_tracking
+select permanent_address_id,  current_address_id from addresses where city!= "his" or city!= "her"	student_transcripts_tracking
+select distinct student_enrolment.first_name from student_enrolment join addresses on student_enrolment.current_address_id  =  addresses.address_id join addresses on addresses.address_id  =  addresses.address_id where addresses.city  =  "his" or addresses.country  =  "her"	student_transcripts_tracking
+select addresses.address_id,  addresses.line_1 from addresses join students on addresses.address_id  =  students.current_address_id group by addresses.address_id order by count(*) desc limit 1	student_transcripts_tracking
+select addresses.address_id,  addresses.line_1,  addresses.line_2 from addresses join students on addresses.address_id  =  students.current_address_id group by addresses.address_id order by count(*) desc limit 1	student_transcripts_tracking
+select avg(transcripts.transcript_date) from transcript_contents join transcripts on transcript_contents.transcript_id  =  transcripts.transcript_id	student_transcripts_tracking
+select avg(transcript_date) from transcripts	student_transcripts_tracking
+select transcript_date,  other_details from transcripts order by transcript_date asc limit 1	student_transcripts_tracking
+select transcript_date,  other_details from transcripts order by transcript_date asc limit 1	student_transcripts_tracking
+select count(*) from transcripts	student_transcripts_tracking
+select count(*) from transcripts	student_transcripts_tracking
+select transcript_date from transcripts order by transcript_date desc limit 1	student_transcripts_tracking
+select transcript_date from transcripts order by transcript_date desc limit 1	student_transcripts_tracking
+select count(distinct course_enrolment_id) from student_enrolment	student_transcripts_tracking
+select max(transcript_id),  course_id from student_enrolment group by course_id	student_transcripts_tracking
+select transcript_date from transcripts order by transcript_id asc limit 1	student_transcripts_tracking
+select transcript_date,  transcript_id from transcripts group by transcript_id order by count(*) asc limit 1	student_transcripts_tracking
+select semesters.semester_name from semesters join student_enrolment on semesters.semester_id  =  student_enrolment.semester_id where student_enrolment.student_id  =  "master" intersect select semesters.semester_name from semesters join student_enrolment on semesters.semester_id  =  student_enrolment.semester_id where student_enrolment.student_enrolment_id  =  "bachelor"	student_transcripts_tracking
+select semester_id from student_enrolment where other_student_details  =  "masters" intersect select semester_id from student_enrolment where other_student_details  =  "bachelors"	student_transcripts_tracking
+select count(distinct addresses.address_id) from addresses join students on addresses.address_id  =  students.current_address_id	student_transcripts_tracking
+select distinct addresses.address_id from addresses join students on addresses.address_id  =  students.current_address_id	student_transcripts_tracking
+select distinct other_student_details from student_enrolment order by other_student_details asc	student_transcripts_tracking
+select other_student_details from students order by other_student_details desc	student_transcripts_tracking
+select section_name from sections where section_id  =  'h'	student_transcripts_tracking
+select section_description from sections where section_name  =  "h"	student_transcripts_tracking
+select first_name from students where permanent_address_id in (select permanent_address_id from addresses where country  =  "haiti" or cell_mobile_number  =  "09700166582")	student_transcripts_tracking
+select first_name from student_enrolment where permanent_address_id  =  "haiti" or cell_mobile_number  =  "09700166582"	student_transcripts_tracking
+select title from cartoon order by title	tvshow
+select title from cartoon order by title asc	tvshow
+select distinct directed_by from cartoon where directed_by  =  "ben jones"	tvshow
+select distinct cartoon.title from cartoon join cartoon on cartoon.id  =  cartoon.directed_by where cartoon.directed_by  =  "bre jones"	tvshow
+select count(*) from cartoon where written_by  =  "joseph kuhr"	tvshow
+select count(*) from cartoon where written_by  =  "joseph kuhr"	tvshow
+select title,  director from cartoon order by original_air_date	tvshow
+select title,  directed_by from cartoon order by air_date	tvshow
+select title from cartoon where directed_by  =  "ben jones" or directed_by  =  "brandon vietti"	tvshow
+select title from cartoon where directed_by  =  'bre jones' or directed_by  =  'randon vietti'	tvshow
+select country,  count(*) from tv_channel group by country order by count(*) desc limit 1	tvshow
+select country,  count(*) from tv_channel group by country order by count(*) desc limit 1	tvshow
+select count(distinct series_name),  content from tv_channel	tvshow
+select count(distinct series_name),  content from tv_channel	tvshow
+select content fromTV_channel where series_name  =  "sky radio"	tvshow
+select content fromTV_channel where series_name  =  "sky radio"	tvshow
+select package_option from tv_channel where series_name  =  "sky radio"	tvshow
+select package_option from tv_channel where series_name  = 'sky radio'	tvshow
+select count(*) fromTV_channel where language  =  "english"	tvshow
+select count(*) fromTV_channel where language  =  "english"	tvshow
+select language,  count(*) from Tv_channel group by language order by count(*) desc limit 1	tvshow
+select language,  count(*) from tv_channel group by language order by count(*) desc limit 1	tvshow
+select language,  count(*) from tv_channel group by language	tvshow
+select language,  count(*) from tv_channel group by language	tvshow
+select t1.series_name from cartoon as t1 join tv_channel as t2 on t1.id  =  t2.id join tv_series as t3 on t2.id  =  t3.id where t3.title  =  "the blue beetle!"	tvshow
+select t1.series_name from cartoon as t1 join tv_channel as t2 on t1.id  =  t2.id join tv_series as t3 on t2.id  =  t3.id where t3.title  =  "the blue beetle"	tvshow
+select cartoon.title from cartoon join tv_channel on cartoon.id  =  tv_channel.id where tv_channel.series_name  =  "sky radio"	tvshow
+select cartoon.title from cartoon join tv_channel on cartoon.id  =  tv_channel.id where tv_channel.series_name  =  "sky radio"	tvshow
+select episode fromTV_series order by rating	tvshow
+select episode fromTV_series order by ratings	tvshow
+select episode,  rank from tv_series order by rank desc limit 3	tvshow
+select max(episode),  ratings from t1 join tv_series on t1.episode  =  t2.episode group by ratings order by count(*) desc limit 3	tvshow
+select min(share),  max(share) fromTV_series	tvshow
+select max(share),  min(share) from tv_series	tvshow
+select air_date from tv_series where episode  =  "a love of a lifetimeetime"	tvshow
+select episode fromTV_series where air_date  =  "a love of a lifetime"	tvshow
+select weekly_rank fromTV_series where episode  =  "a love of a lifetime"	tvshow
+select weekly_rank fromTV_series where episode  =  "a love of a lifetimeetime"	tvshow
+select t1.series_name from tv_series as t1 join tv_channel as t2 on t1.id  =  t2.id where t2.episode  =  "a love of a lifetime"	tvshow
+select series_name fromTV_series where epepisode  =  "a love of a lifetime"	tvshow
+select episode from tv_series where series_name  =  "sky radio"	tvshow
+select episode fromTV_series where series_name  =  "sky radio"	tvshow
+select count(*),  directed_by from cartoon group by directed_by	tvshow
+select count(*),  directed_by from cartoon group by directed_by	tvshow
+select production_code,  channel from cartoon group by production_code order by count(*) desc limit 1	tvshow
+select produdction_code,  channel from cartoon order by created_by desc limit 1	tvshow
+select package_option,  series_name from tv_channel order by high_definition_tv desc limit 1	tvshow
+select package_option,  series_name from tv_channel order by high_definition_tv desc limit 1	tvshow
+select country from cartoon where written_by  =  'todd casey'	tvshow
+select cartoon.country from cartoon join tv_channel on cartoon.id  =  tv_channel.id where cartoon.written_by  =  'todd casey'	tvshow
+select country from cartoon where written_by not in (select cartoon.written_by from cartoon join tv_channel on cartoon.id  =  tv_channel.id where cartoon.writable_by  =  'odd casey')	tvshow
+select country from cartoon where written_by not in (select written_by from cartoon where directed_by  =  'todd casey')	tvshow
+select t1.series_name,  t1.country from cartoon as t1 join tv_channel as t2 on t1.id  =  t2.id where t2.directed_by  =  "ben jones" intersect select t1.series_name,  t1.country from cartoon as t1 join tv_series as t2 on t1.id  =  t2.id where t2.directed_by  =  "michael chang"	tvshow
+select t1.series_name,  t1.country from cartoon as t1 join tv_channel as t2 on t1.id  =  t2.id where t2.directed_by  =  "ben jones" intersect select t1.series_name,  t1.country from cartoon as t1 join tv_series as t2 on t1.id  =  t2.id where t2.directed_by  =  "michael chang"	tvshow
+select pixel_aspect_ratio_par,  nation from tv_channel where language!= "english"	tvshow
+select pixel_aspect_ratio_par,  country fromTV_channel where language!= "english"	tvshow
+select id from tv_channel where country  >  (select country from tv_channel group by country having count(*)  >  2)	tvshow
+select id from tv_channel where count(*)  >  2	tvshow
+select id from cartoon where directed_by!= "ben jones"	tvshow
+select id fromTV_channel where id not in (select channel from cartoon where directed_by  =  "bre jones")	tvshow
+select package_option from tv_channel where id not in (select id from cartoon where directed_by  =  "ben jones")	tvshow
+select package_option from tv_channel where id not in (select channel from cartoon where directed_by  =  "bre jones")	tvshow
+select count(*) from poker_player	poker_player
+select count(*) from poker_player	poker_player
+select earnings from poker_player order by earnings desc	poker_player
+select earnings from poker_player order by earnings desc	poker_player
+select final_table_made,  best_finish from poker_player	poker_player
+select final_table_made,  best_finish from poker_player	poker_player
+select avg(earnings) from poker_player	poker_player
+select avg(earnings) from poker_player	poker_player
+select money_rank from poker_player order by earnings desc limit 1	poker_player
+select money_rank from poker_player order by earnings desc limit 1	poker_player
+select max(final_table_made) from poker_player where earnings  <  200000	poker_player
+select max(final_table_made) from poker_player where earnings  >  200000	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id where poker_player.earnings  >  300000	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id where poker_player.earnings  >  300000	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id order by poker_player.final_table_made asc	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id order by poker_player.final_table_made asc	poker_player
+select people.birth_date from people join poker_player on people.people_id  =  poker_player.people_id order by poker_player.earnings limit 1	poker_player
+select people.birth_date from poker_player join people on poker_player.people_id  =  people.people_id order by poker_player.earnings limit 1	poker_player
+select money_rank from poker_player order by money_rank desc limit 1	poker_player
+select money_rank from poker_player order by height desc limit 1	poker_player
+select avg(earnings) from poker_player where height  >  200	poker_player
+select avg(earnings) from poker_player where money_rank  >  200	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id order by poker_player.earnings desc	poker_player
+select people.name from poker_player join people on poker_player.people_id  =  people.people_id order by poker_player.earnings desc	poker_player
+select nationality,  count(*) from people group by nationality	poker_player
+select nationality,  count(*) from people group by nationality	poker_player
+select nationality from people group by nationality order by count(*) desc limit 1	poker_player
+select nationality from people group by nationality order by count(*) desc limit 1	poker_player
+select nationality from people group by nationality having count(*)  >=  2	poker_player
+select nationality from people group by nationality having count(*)  >=  2	poker_player
+select name,  birth_date from people order by name asc	poker_player
+select name,  birth_date from people order by name	poker_player
+select name from people where nationality!= "russia"	poker_player
+select name from people where people_id not in (select people_id from poker_player where nationality  =  'russia')	poker_player
+select name from people where people_id not in (select people_id from poker_player)	poker_player
+select name from people where people_id not in (select people_id from poker_player)	poker_player
+select count(distinct nationalality) from people	poker_player
+select count(distinct nationalality) from people	poker_player
+select count(*) from area_code_state	voter_1
+select contestant_number,  contestant_name from consTESTANTs order by contestant_name desc	voter_1
+select vote_id,  phone_number,  state from votes	voter_1
+select max(area_code),  min(area_code) from area_code_state	voter_1
+select created from votes where state  =  'ca'	voter_1
+select contestant_name from consTESTANTs where contestant_name!= 'jessie alloway'	voter_1
+select distinct state,  created from votes	voter_1
+select conteSTANTs.contestant_number,  conteSTANTs.contestant_name from conteSTANTs join votes on conteSTANTs.contestant_number  =  votes.contestant_number group by conteSTANTs.contestant_number having count(*)  >=  2	voter_1
+select conteSTANTs.contestant_number,  conteSTANTs.contestant_name from conteSTANTs join votes on conteSTANTs.contestant_number  =  votes.contestant_number group by conteSTANTs.contestant_number order by count(*) desc limit 1	voter_1
+select count(*) from votes where state  =  'ny' or state  =  'ca'	voter_1
+select count(*) from votes where vote_id not in (select vote_id from votes)	voter_1
+select area_code from voters group by area_code order by count(*) desc limit 1	voter_1
+select created,  state,  phone_number from votes where contestant_name  =  'tabatha gehling'	voter_1
+select area_code from votes where contestant_name  =  'tabatha gehling' intersect select area_code from votes where contestant_name  =  'kelly clauss'	voter_1
+select conteSTANTs.contestant_name from conteSTANTs join conteSTANTs on conteSTANTs.contestant_number  =  conteSTANTs.contestant_number where conteSTANTs.contestant_name like '%al%'	voter_1
+select name from country where indepyear  >  1950	world_1
+select name from country where lifeexpectancy  >  1950	world_1
+select count(*) from country where governmentform  = 'republic'	world_1
+select count(*) from country where governmentform  = 'republic'	world_1
+select sum(surfacearea) from country where region  =  'caribbean'	world_1
+select surfacearea from country where region  =  "carribean"	world_1
+select continent from country where region  =  "anguilla"	world_1
+select continent from country where region  =  "anguilla"	world_1
+select region from country where countrycode  =  "kabul"	world_1
+select region from country where region  =  "kabul"	world_1
+select language from countrylanguage where countrycode  =  'aruba' group by language order by count(*) desc limit 1	world_1
+select language from countrylanguage where countrycode  =  'predominantly spoken in aruba'	world_1
+select population,  lifeexpectancy from country where countrycode  =  "brazil"	world_1
+select population,  lifeexpectancy from country where countrycode  =  "brazil"	world_1
+select region,  population from country where sex  =  "angularola"	world_1
+select region,  population from country where sexpold  =  'angularola'	world_1
+select avg(lifeexpectancy) from country where region  =  "central africa"	world_1
+select avg(lifeexpectancy) from country where countrycode  =  "central africa"	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "asia" order by country.lifeexpectancy desc limit 1	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.countrycode  =  "asia" order by lifeexpectancy limit 1	world_1
+select sum(population),  max(gnpold) from country where countrycode  =  'asia'	world_1
+select count(*),  gnppold from country where sex  =  "asia" group by gnppold order by count(*) desc limit 1	world_1
+select avg(lifeexpectancy) from country where countrycode  =  "african"	world_1
+select avg(lifeexpectancy) from country where countrycode  =  "africa"	world_1
+select sum(surfacearea),  continent from country where region  =  'asia' and region  =  'europe'	world_1
+select sum(surfacearea) from country where countrycode  =  'asia' or countrycode  =  'europe'	world_1
+select count(*) from city where district  =  "gelderland"	world_1
+select sum(population) from city where district  =  'gelderland'	world_1
+select avg(gnp),  avg(population) from country where governmentform  =  "us"	world_1
+select avg(genenp),  avg(population) from country where region  =  "us"	world_1
+select count(distinct language) from countrylanguage	world_1
+select count(distinct language) from countrylanguage	world_1
+select count(*) from country where governmentform  =  "africa"	world_1
+select count(distinct governmentform) from country where countrycode  =  "africa"	world_1
+select count(*) from countrylanguage where countrycode  =  'aruba'	world_1
+select count(*) from countrylanguage where countrycode  =  "aruba"	world_1
+select count(*) from countrylanguage where isofficial  =  'afghanistan'	world_1
+select count(*) from countrylanguage where countrycode  =  'afghanistan'	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.countrycode order by countrylanguage.language desc limit 1	world_1
+select country.name from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode group by countrylanguage.language order by count(*) desc limit 1	world_1
+select country.continent from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode group by country.continent order by count(*) desc limit 1	world_1
+select continent from country group by continent order by count(*) desc limit 1	world_1
+select count(*) from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "english" and countrylanguage.language  =  "dutch"	world_1
+select count(*) from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" and countrylanguage.language  =  "dutch"	world_1
+select country.name from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" intersect select country.name from country join countrylanguage on countrylanguage.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "french"	world_1
+select country.name from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" intersect select country.name from country join countrylanguage on countrylanguage.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "french"	world_1
+select country.name from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" intersect select country.name from country join countrylanguage on countrylanguage.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "french"	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "english" and countrylanguage.language  =  "french"	world_1
+select count(distinct continent) from country where countrycode  =  'chinese'	world_1
+select count(*) from country where region  =  'chinese'	world_1
+select region from country where language  =  "english" or language  =  "dutch"	world_1
+select region from country where region  =  "dutch" or region  =  "english"	world_1
+select countrycode from countrylanguage where language  =  "english" or language  =  "dutch"	world_1
+select countrycode from countrylanguage where language  =  "english" or language  =  "dutch"	world_1
+select countrylanguage.language from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode where country.continent  =  "asian" order by countrylanguage.population desc limit 1	world_1
+select language from countrylanguage where countrycode  =  'asian' group by language order by count(*) desc limit 1	world_1
+select language from countrylanguage where countrycode  = 'republic' group by language having count(*)  =  1	world_1
+select language from countrylanguage where countrycode  = 'republic government'	world_1
+select city.name from city join countryon city.countrycode  =  countrylanguage.countrycode join countrylanguage on countrylanguage.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" order by city.population desc limit 1	world_1
+select city.name from city join countrylanguage on city.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" group by city.id order by count(*) desc limit 1	world_1
+select name,  population,  lifeexpectancy from country order by surfacearea desc limit 1	world_1
+select country.name,  country.population,  country.lifeexpectancy from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.countrycode  =  "asian" order by countrylanguage.land desc limit 1	world_1
+select avg(lifeexpectancy) from country where countrycode!= "english" and countrylanguage.language!= "official"	world_1
+select avg(lifeexpectancy) from country where language!= "english"	world_1
+select count(*) from country where countrycode not in (select country.countrycode from country join countrylanguage on country.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english")	world_1
+select count(*) from country where countrycode not in (select countrycode from countrylanguage where language  =  "english")	world_1
+select official from countrylanguage where headofstate  =  'beatrix'	world_1
+select countrylanguage.language from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.headofstate  =  'beatrix'	world_1
+select count(distinct language) from countrylanguage where countrycode  <  1930	world_1
+select count(distinct language) from countrylanguage where countrycode  <  1930	world_1
+select countrycode from country where surfacearea  >  (select max(surfacearea) from country where countrycode  =  'europe')	world_1
+select countrycode from country where region  >  (select max(surfacearea) from country where countrycode  =  'europe')	world_1
+select countrycode from country where population  <  (select min(population) from country where countrycode  =  'african')	world_1
+select city.countrycode from city join countrylanguage on city.countrycode  =  countrylanguage.countrycode join country on countrylanguage.countrycode  =  countrylanguage.countrycode where countrylanguage.countrycode  =  "african" and countrylanguage.countrycode  =  "asia"	world_1
+select city.countrycode from city join countrylanguage on city.countrycode  =  countrylanguage.countrycode where countrylanguage.countrycode  =  'asian' intersect select city.city from city join countryon city.countrycode  =  countrylanguage.countrycode where countrylanguage.countrycode  =  'africa'	world_1
+select countrycode from country where population  >  (select max(population) from country where countrycode  =  'africa')	world_1
+select countrycode from country except select countrycode from countrylanguage where language!= "english"	world_1
+select countrycode from country except select countrycode from countrylanguage where language!= "english"	world_1
+select countrycode from country join countrylanguage on country.code  =  countrylanguage.code where countrylanguage.language  =  "english"	world_1
+select countrycode from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language!= "english"	world_1
+select country.code from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "english" except select country.code from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.governmentform  =  "republic"	world_1
+select countrycode from country except select country.code from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "english" and countrylanguage.governmentform  =  "republics"	world_1
+select city.name from city join countrylanguage on city.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" and countrylanguage.isofficial!= "english"	world_1
+select city.name from city join countrylanguage on city.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "english" and countrylanguage.isofficial  =  "english"	world_1
+select distinct city.id from city join countrylanguage on city.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "asian" and countrylanguage.language  =  "chinese"	world_1
+select distinct city.name from city join countrylanguage on city.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "asia" intersect select city.name from city join countrylanguage on countrylanguage.countrycode  =  countrylanguage.countrycode where countrylanguage.language  =  "chinese"	world_1
+select name,  indepyear,  surfacearea from country order by population asc limit 1	world_1
+select name,  indepyear,  surfacearea from country order by population asc limit 1	world_1
+select population,  name,  leader from country order by surfacearea desc limit 1	world_1
+select name,  population,  headofstate from country order by surfacearea desc limit 1	world_1
+select countryname,  language from countrylanguage group by countrycode having count(*)  >=  3 group by countryname having count(*)  >=  3	world_1
+select country.name,  countrylanguage.language from country join countrylanguage on country.code  =  countrylanguage.countrycode group by countrylanguage.countrycode having count(*)  >  2	world_1
+select count(*),  district from city where population  >  (select avg(population) from city)	world_1
+select district,  avg(population) from city group by district	world_1
+select governmentform,  sum(population) from country where lifeexpectancy  >  72 group by governmentform	world_1
+select governmentform,  sum(population) from country where lifeexpectancy  >  72 group by governmentform	world_1
+select avg(population),  avg(population),  continent from country where lifeexpectancy  <  72 group by continent	world_1
+select distinct continents,  avg(lifeexpectancy),  avg(lifeexpectancy) from country where lifeexpectancy  <  72 group by continent	world_1
+select name,  region from country order by surfacearea desc limit 5	world_1
+select country.name,  country.surfacearea from country join city on country.code  =  city.countrycode group by city.countrycode order by count(*) desc limit 5	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.countrycode order by countrylanguage.population desc limit 3	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.countrycode group by countrylanguage.countrycode order by count(*) desc limit 3	world_1
+select country.name from country join city on country.countrycode  =  city.countrycode where country.population  =  3 order by country.population limit 3	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.countrycode group by countrylanguage.countrycode order by count(*) desc limit 3	world_1
+select count(*) from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "asia"	world_1
+select count(*) from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "asia"	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.country where country.continent  =  "europe" and countrylanguage.population  =  80000	world_1
+select country.name from country join countrylanguage on country.code  =  countrylanguage.country where countrylanguage.language  =  "europe" and countrylanguage.population  =  80000	world_1
+select sum(population),  avg(surfacearea) from country where continent  =  'north america' and population  >  3000	world_1
+select sum(population),  avg(surfacearea) from country where countrycode  =  'north' and surfacearea  >  3000	world_1
+select distinct city.name from city join country on city.countrycode  =  country.countrycode where country.population between 160000 and 900000	world_1
+select city.name from city join country on city.id  =  country.code where country.population between 160000 and 900000	world_1
+select language from countrylanguage order by countrycode desc limit 1	world_1
+select language from countrylanguage group by language order by count(*) desc limit 1	world_1
+select language,  max(percentage) from countrylanguage group by language order by max(percentage) desc limit 1	world_1
+select countrycode,  language from countrylanguage order by percentage desc limit 1	world_1
+select count(*) from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.percentage  =  (select max(percentage) from countrylanguage)	world_1
+select count(*) from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  "predominantly spoken"	world_1
+select country.code from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  = 'spanish' order by countrylanguage.percentage desc limit 1	world_1
+select country.code from country join countrylanguage on country.code  =  countrylanguage.countrycode where countrylanguage.language  =  'predominantly spoken'	world_1
+select count(*) from conductor	orchestra
+select count(*) from conductor	orchestra
+select name from conductor order by age asc	orchestra
+select name from conductor order by age	orchestra
+select name from conductor where nationality!= "usa"	orchestra
+select name from conductor where nationality!= "usa"	orchestra
+select record_company from orbit order by year_of_founded desc	orchestra
+select record_company from orchestra order by year_of_founded desc	orchestra
+select avg(attendance) from show	orchestra
+select avg(attendance) from show	orchestra
+select max(share),  min(share) from performance where type!= "live final"	orchestra
+select max(share),  min(share) from performance where type!= "live final"	orchestra
+select count(distinct nationality) from conductor	orchestra
+select count(distinct nationality) from conductor	orchestra
+select name from conductor order by year_of_work desc	orchestra
+select name from conductor order by year_of_work desc	orchestra
+select conductor.name from conductor joinorchestra on conductor.conductor_id  = orchestra.conductor_id group by conductor.conductor_id order by count(*) desc limit 1	orchestra
+select conductor.name from conductor join business on conductor.conductor_id  =  performance.conductor_id group by conductor.conductor_id order by count(*) desc limit 1	orchestra
+select conductor.name,  orbit.orchestra from conductor join orbit on conductor.conductor_id  =  orbit.conductor_id	orchestra
+select conductor.name,  business.nationality from business join conductor on performance.conductor_id  =  conductor.conductor_id	orchestra
+select conductor.name from conductor join business on conductor.conductor_id  =  business.conductor_id group by business.conductor_id having count(*)  >  1	orchestra
+select conductor.name from conductor join orbit on conductor.conductor_id  =  orbit.conductor_id group by conductor.conductor_id having count(*)  >  1	orchestra
+select conductor.name from conductor join orbit on conductor.conductor_id  =  orbit.conductor_id group by conductor.conductor_id order by count(*) desc limit 1	orchestra
+select conductor.name from conductor join orbit on conductor.conductor_id  =  orbit.conductor_id group by conductor.conductor_id order by count(*) desc limit 1	orchestra
+select conductor.name from conductor join orbit on conductor.conductor_id  =  orbit.conductor_id where orbit.year_of_founded  >  2008	orchestra
+select conductor.name from conductor join orbit on conductor.conductor_id  =  orbit.conductor_id where orbit.year_of_founded  >  2008	orchestra
+select record_company,  count(*) from orchestra group by record_company	orchestra
+select record_company,  count(*) fromorchestra group by record_company	orchestra
+select major_record_format from orbit order by major_record_format asc	orchestra
+select major_record_format from orbit order by major_record_format asc	orchestra
+select record_company from orbit group by record_company order by count(*) desc limit 1	orchestra
+select record_company from orbit group by record_company order by count(*) desc limit 1	orchestra
+select name from orbit where orbit_id not in (select orbit_id from performance)	orchestra
+select distinct orchestra from performance	orchestra
+select record_company from orbit where year_of_founded  <  2003	orchestra
+select record_company from orbit where year_of_founded  <  2003 intersect select record_company from orbit where year_of_founded  <  2003	orchestra
+select count(*) from orbit where major_record_format  =  "cd" or major_record_format  =  "dvd"	orchestra
+select count(*) from orbit where record_company  =  "cd" or record_format  =  "dvd"	orchestra
+select year_of_founded from performance group by year_of_founded having count(*)  >  1	orchestra
+select year_of_founded from performance group by year_of_founded having count(*)  >  1	orchestra
+select count(*) from highschooler	network_1
+select count(*) from highschooler	network_1
+select name,  grade from highschooler	network_1
+select name,  grade from highschooler	network_1
+select grade from highschooler	network_1
+select grade from highschooler	network_1
+select grade from highschooler where name  =  "kyle"	network_1
+select grade from highschooler where name  =  "kyle"	network_1
+select name from highschooler where grade  =  10	network_1
+select name from highschooler where grade  =  10	network_1
+select id from highschooler where name  =  "kyle"	network_1
+select id from highschooler where name  =  "kyle"	network_1
+select count(*) from highschooler where grade  =  9 or grade  =  10	network_1
+select count(*) from highschooler where grade  =  9 or grade  =  10	network_1
+select grade,  count(*) from highschooler group by grade	network_1
+select grade,  count(*) from highschooler group by grade	network_1
+select grade from highschooler order by grade desc limit 1	network_1
+select grade from highschooler order by grade desc limit 1	network_1
+select grade from highschooler group by grade having count(*)  >=  4	network_1
+select grade from highschooler group by grade having count(*)  >=  4	network_1
+select student_id,  count(*) from friend group by student_id	network_1
+select count(*),  student_id from friend group by student_id	network_1
+select highschooler.name,  count(*) from highschooler join friend on highschooler.id  =  friend.friend_id group by highschooler.id	network_1
+select highschooler.name,  count(*) from friend join highschooler on friend.friend_id  =  highschooler.id group by friend.friend_id	network_1
+select highschooler.name from friend join highschooler on friend.friend_id  =  highschooler.id group by highschooler.id order by count(*) desc limit 1	network_1
+select highschooler.name from highschooler join friend on highschooler.id  =  friend.friend_id group by highschooler.id order by count(*) desc limit 1	network_1
+select highschooler.name from highschooler join friend on highschooler.id  =  friend.friend_id group by highschooler.id having count(*)  >=  3	network_1
+select highschooler.name from highschooler join friend on highschooler.id  =  friend.friend_id group by highschooler.id having count(*)  >=  3	network_1
+select highschooler.name from highschooler join friend on highschooler.id  =  friend.friend_id where friend.name  =  "kyle"	network_1
+select friend.name from friend join highschooler on friend.friend_id  =  highschooler.id where highschooler.name  =  "kyle"	network_1
+select count(*) from friend join highschooler on friend.friend_id  =  highschooler.id where highschooler.name  =  "kyle"	network_1
+select count(*) from friend where friend_id  =  'kyle'	network_1
+select student_id from friend except select student_id from friend	network_1
+select highschooler.id from highschooler join friend on highschooler.id  =  friend.friend_id	network_1
+select name from highschooler where id not in (select highschooler.id from friend)	network_1
+select highschooler.name from highschooler join friend on highschooler.id  =  friend.friend_id	network_1
+select highschooler.id from highschooler join likes on highschooler.id  =  likes.liked_id	network_1
+select student_id from friend intersect select liked_id from likes	network_1
+select highschooler.name from highschooler join likes on highschooler.id  =  likes.liked_id	network_1
+select highschooler.name from highschooler join likes on highschooler.id  =  likes.highschooler_id	network_1
+select count(*),  student_id from likes group by student_id	network_1
+select student_id,  count(*) from likes group by student_id	network_1
+select highschooler.name,  count(*) from highschooler join likes on highschooler.id  =  likes.liked_id group by highschooler.id	network_1
+select highschooler.name,  count(*) from highschooler join likes on highschooler.id  =  likes.liked_id group by highschooler.id	network_1
+select highschooler.name from highschooler join likes on highschooler.id  =  likes.liked_id group by highschooler.id order by count(*) desc limit 1	network_1
+select highschooler.name from highschooler join likes on highschooler.id  =  likes.liked_id group by highschooler.id order by count(*) desc limit 1	network_1
+select highschooler.name from highschooler join likes on highschooler.id  =  likes.liked_id group by highschooler.id having count(*)  >=  2	network_1
+select highschooler.name from highschooler join likes on highschooler.id  =  likes.student_id group by highschooler.id having count(*)  >=  2	network_1
+select highschooler.name from highschooler join friend on highschooler.id  =  friend.friend_id where highschooler.grade  >  5 group by highschooler.name having count(*)  >=  2	network_1
+select highschooler.name from friend join highschooler on friend.friend_id  =  highschooler.id where friend.grade  >  5 intersect select highschooler.name from friend join highschooler on friend.friend_id  =  highschooler.id group by highschooler.id having count(*)  >  2	network_1
+select count(*) from likes where student_id  =  'kyle'	network_1
+select count(*) from likes join highschooler on likes.student_id  =  highschooler.id where highschooler.name  =  "kyle"	network_1
+select avg(grade) from friend	network_1
+select avg(grade) from friend	network_1
+select min(grade) from highschooler	network_1
+select min(highschooler.grade) from highschooler join friend on highschooler.id  =  friend.friend_id	network_1
+select state from owners intersect select state from professionals	dog_kennels
+select state from owners intersect select state from professionals	dog_kennels
+select avg(age) from dogs	dog_kennels
+select avg(age) from dogs	dog_kennels
+select professionals.professional_id,  professionals.last_name,  professionals.home_phone from professionals join treatment_types on professionals.professional_id  =  treatment_types.treatment_type_code where treatment_types.treatment_type_code  =  "indiana" group by professionals.professional_id having count(*)  >  2	dog_kennels
+select professionals.professional_id,  professionals.last_name,  professionals.home_phone from professionals join treatment on professionals.professional_id  =  treatment.professional_id where professionals.state  =  "indiana" group by professionals.professional_id having count(*)  >  2	dog_kennels
+select name from dogs where owner_id not in (select dog_id from treatment_types where cost_of_treatment  >  1000)	dog_kennels
+select name from dogs where owner_id not in (select owner_id from owners where age  >  1000)	dog_kennels
+select first_name from professionals where professional_id not in (select professional_id from owners)	dog_kennels
+select first_name from professionals where professional_id not in (select professional_id from owners)	dog_kennels
+select professionals.professional_id,  professionals.role_code,  professionals.email_address from professionals join treatment on professionals.professional_id  =  treatment.professional_id	dog_kennels
+select professionals.professional_id,  professionals.role_code,  professionals.email_address from professionals join treatment on professionals.professional_id  =  treatment.professional_id	dog_kennels
+select owner_id,  first_name,  last_name from owners order by age desc limit 1	dog_kennels
+select owner_id,  first_name,  last_name from owners order by age desc limit 1	dog_kennels
+select professionals.professional_id,  professionals.role_code,  professionals.first_name from professionals join treatments on professionals.professional_id  =  treatments.professional_id group by professionals.professional_id having count(*)  >=  2	dog_kennels
+select professionals.professional_id,  professionals.role_code,  professionals.first_name from professionals join treatments on professionals.professional_id  =  treatments.professional_id group by professionals.professional_id having count(*)  >=  2	dog_kennels
+select breed_name from breeds order by age desc limit 1	dog_kennels
+select breed_name from breeds group by breed_name order by count(*) desc limit 1	dog_kennels
+select owners.owner_id,  owners.last_name from owners join dogs on owners.owner_id  =  dogs.owner_id group by owners.owner_id order by count(*) desc limit 1	dog_kennels
+select owners.owner_id,  owners.last_name from owners join dogs on owners.owner_id  =  dogs.owner_id group by owners.owner_id order by count(*) desc limit 1	dog_kennels
+select treatment_types.treatment_type_description from treatments join treatment_types on treatments.treatment_type_code  =  treatment_types.treatment_type_code group by treatment_types.treatment_type_description order by count(*) desc limit 1	dog_kennels
+select treatment_types.treatment_type_description from treatment_types join treatment on treatment_types.treatment_type_code  =  treatment.treatment_type_code order by treatment.cost_of_treatment desc limit 1	dog_kennels
+select owner_id,  zip_code from owners order by amount desc limit 1	dog_kennels
+select owners.owner_id,  owners.zip_code from owners join dogs on owners.owner_id = dogs.owner_id group by owners.owner_id order by count(*) desc limit 1	dog_kennels
+select professionals.professional_id,  professionals.home_phone from professionals join treatments on professionals.professional_id  =  treatments.professional_id group by professionals.professional_id having count(*)  >=  2	dog_kennels
+select professionals.professional_id,  professionals.cell_number from professionals join treatments on professionals.professional_id  =  treatments.professional_id group by professionals.professional_id having count(*)  >=  2	dog_kennels
+select professionals.first_name,  professionals.last_name from professionals join treatment_types on professionals.professional_id  =  treatment_types.treatment_type_code where treatment_types.cost_of_treatment  <  (select avg(cost_of_treatment) from treatment_types)	dog_kennels
+select professionals.first_name,  professionals.last_name from professionals join treatment_types on professionals.professional_id  =  treatment_types.treatment_type_code where treatment_types.cost_of_treatment  <  (select avg(cost_of_treatment) from treatment_types)	dog_kennels
+select t1.date_of_treatment,  t1.first_name from t1 join professionals on t1.professional_id  =  professionals.professional_id group by t1.date_of_treatment	dog_kennels
+select date_of_treatment,  professionals.first_name from professionals join treatment on professionals.professional_id  =  treatment.professional_id group by professionals.professional_id	dog_kennels
+select cost_of_treatment,  treatment_types.treatment_type_description from treatment_types join treatment on treatment_types.treatment_type_code  =  treatment.treatment_type_code group by treatment.treatment_type_code	dog_kennels
+select cost_of_treatment,  treatment_types.treatment_type_description from treatment_types join treatment on treatment_types.treatment_type_code  =  treatment.treatment_type_code	dog_kennels
+select owners.first_name,  owners.last_name,  sizes.size_code from owners join dogs on owners.owner_id  =  dogs.owner_id where owners.first_name  =  "her"	dog_kennels
+select owners.first_name,  owners.last_name,  sizes.size_code from owners join dogs on owners.owner_id  =  dogs.owner_id	dog_kennels
+select owner.first_name,  dogs.name from owners join dogs on owners.owner_id  =  dogs.owner_id	dog_kennels
+select owner.first_name,  dogs.name from owners join dogs on owners.owner_id  =  dogs.owner_id	dog_kennels
+select dogs.name,  dogs.date_of_birth from dogs join breeds on dogs.dog_id  =  breeds.breed_code where breeds.breed_name  =  "rarest"	dog_kennels
+select dogs.name,  dogs.date_of_birth from dogs join breeds on dogs.dog_id  =  breeds.breed_code where breeds.breed_name  =  "rarest"	dog_kennels
+select owners.first_name,  owners.last_name from owners join dogs on owners.owner_id  =  dogs.owner_id where owners.first_name  =  "viginia"	dog_kennels
+select owners.first_name,  dogs.name from owners join dogs on owners.owner_id  =  dogs.owner_id join owners on dogs.owner_id  =  owners.owner_id where owners.street  =  "viginia"	dog_kennels
+select date_arrived,  date_departed from dogs	dog_kennels
+select date_arrived,  date_departed from dogs	dog_kennels
+select last_name from owners order by age desc limit 1	dog_kennels
+select owner_id,  last_name from owners order by age desc limit 1	dog_kennels
+select email_address from professionals where state  =  "hawaii" or state  =  "wisconsin"	dog_kennels
+select email_address from professionals where state  =  "hawaii" or state  =  "wisconsin"	dog_kennels
+select date_arrived,  date_departed from dogs	dog_kennels
+select date_arrived,  date_departed from dogs	dog_kennels
+select count(*) from dogs	dog_kennels
+select count(*) from dogs join treatment_types on dogs.dog_id  =  treatment_types.treatment_id	dog_kennels
+select count(*) from professionals join treatment on professionals.professional_id  =  treatment.professional_id	dog_kennels
+select count(*) from professionals join trements on professionals.professional_id  =  trements.professional_id	dog_kennels
+select professionals.role_code,  professionals.city,  professionals.state from professionals join owners on professionals.professional_id  =  owners.owner_id where owners.first_name like '%west%'	dog_kennels
+select role_code,  street,  state from professionals where city like '%west%'	dog_kennels
+select owners.first_name,  owners.last_name,  owners.email_address from owners join profiles on owners.owner_id  =  professionals.professional_id where profiles.state like '%orth%'	dog_kennels
+select first_name,  last_name,  email_address from owners where state like '%orth%'	dog_kennels
+select count(*) from dogs where age  >  (select avg(age) from dogs)	dog_kennels
+select count(*) from dogs where age  >  (select avg(age) from dogs)	dog_kennels
+select cost_of_treatment from treatment group by cost_of_treatment order by count(*) desc limit 1	dog_kennels
+select cost_of_treatment from treatment order by date_of_treatment desc limit 1	dog_kennels
+select count(*) from dogs where dog_id not in (select dog_id from treatment)	dog_kennels
+select count(*) from dogs where dog_id not in (select dog_id from treatment)	dog_kennels
+select count(*) from owners where owner_id not in (select owner_id from dogs)	dog_kennels
+select count(*) from owners where owner_id not in (select owner_id from dogs)	dog_kennels
+select count(*) from professionals except select professionals.professional_id from professionals join treatment on professionals.professional_id  =  treatment.professional_id	dog_kennels
+select count(*) from professionals where professional_id not in (select professional_id from loose)	dog_kennels
+select name,  age,  weight from dogs where abandoned_yn  =  1 intersect select dog_id,  age,  weight from dogs where abandoned_yn  =  0	dog_kennels
+select name,  age,  weight from dogs where abandoned_yn  =  1 intersect select dog_id,  age,  weight from dogs where abandoned_yn  =  0	dog_kennels
+select avg(age) from dogs	dog_kennels
+select avg(age) from dogs	dog_kennels
+select age from dogs order by age asc limit 1	dog_kennels
+select age from dogs order by age asc limit 1	dog_kennels
+select charge_type,  charge_amount from charges group by charge_type	dog_kennels
+select charge_type,  charge_amount from charges	dog_kennels
+select charge_amount from charges group by charge_type order by count(*) desc limit 1	dog_kennels
+select charge_amount from charges order by charge_type desc limit 1	dog_kennels
+select email_address,  home_phone from professionals	dog_kennels
+select email_address,  cell_number,  home_phone from professionals	dog_kennels
+select breed_name,  sizes.size_code from breeds join sizes on breeds.breed_code  =  sizes.breed_code	dog_kennels
+select distinct breeds.breed_name,  sizes.size_code from dogs join breeds on dogs.breed_code  =  breeds.breed_code	dog_kennels
+select professionals.first_name,  professionals.last_name from professionals join treatment_types on professionals.professional_id  =  treatment_types.treatment_type_code	dog_kennels
+select professionals.first_name,  professionals.last_name,  treatment.treatment_type_description from professionals join treatment on professionals.professional_id  =  treatment.professional_id	dog_kennels

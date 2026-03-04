@@ -1,0 +1,29 @@
+[
+  {"db_id": "chinook_1", "question": "Find albums with rock in the title"},
+  {"db_id": "chinook_1", "question": "Who created the album Balls to the Wall"},
+  {"db_id": "chinook_1", "question": "Customers who never purchased anything"},
+  {"db_id": "chinook_1", "question": "Show employees living in Calgary"},
+  {"db_id": "chinook_1", "question": "Which artist has the most albums"},
+  {"db_id": "chinook_1", "question": "List playlist names"},
+  {"db_id": "chinook_1", "question": "Total number of albums"},
+  
+  {"db_id": "bike_1", "question": "Cities having more than 15 stations"},
+  {"db_id": "bike_1", "question": "Stations in Mountain View"},
+  {"db_id": "bike_1", "question": "Which zip code has the highest temperature"},
+  
+  {"db_id": "student_assessment", "question": "Students who took the most courses"},
+  {"db_id": "student_assessment", "question": "Latest accessed course"},
+  
+  {"db_id": "flight_1", "question": "Flights with aircraft name"},
+  {"db_id": "flight_1", "question": "Airports in a city"},
+  
+  {"db_id": "store_1", "question": "Products costing more than average"},
+  {"db_id": "store_1", "question": "Customers who bought nothing"},
+  
+  {"db_id": "book_2", "question": "Writers who wrote multiple books"},
+  
+  {"db_id": "csu_1", "question": "Campuses with highest enrollment"},
+  {"db_id": "csu_1", "question": "Total number of campuses"},
+  
+  {"db_id": "car_1", "question": "Cars manufactured after 2010"}
+]

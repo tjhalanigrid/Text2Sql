@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.bin
+*.pt
+*.safetensors
+
+models/
+checkpoints/
+data/database/
+
+.DS_Store
